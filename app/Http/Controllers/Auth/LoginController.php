@@ -7,6 +7,8 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Services\AuthService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class LoginController extends Controller
 {
@@ -14,8 +16,9 @@ class LoginController extends Controller
     {
     }
 
-    public function index(): void
+    public function index(): ResponseFactory | Response
     {
+        return inertia('Auth/Login');
     }
 
     public function store(LoginRequest $request): RedirectResponse
