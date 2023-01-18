@@ -23,6 +23,7 @@ class LoginController extends Controller
 
     public function store(LoginRequest $request): RedirectResponse
     {
+        dd('sla');
         $data = $request->validated();
         if (!$this->authService->login($data, $request->remember ?? false)) {
             throw ValidationException::withMessages([
