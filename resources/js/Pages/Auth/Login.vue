@@ -1,5 +1,7 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
+import Button from '../../Components/Form/Button.vue';
+import Input from '../../Components/Form/Input.vue';
 import Card from '../../Components/Global/Card.vue';
 import AuthLayout from '../../Layouts/AuthLayout.vue';
 </script>
@@ -9,22 +11,20 @@ import AuthLayout from '../../Layouts/AuthLayout.vue';
       <template #header>Login</template>
       <form>
         <div class="form-floating mb-2">
-          <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+          <Input type="email" id="email" placeholder="Email" />
           <label for="email">Email</label>
         </div>
         <div class="form-floating mb-2">
-          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+          <Input type="password" id="password" placeholder="Senha" />
           <label for="password">Senha</label>
         </div>
         <div class="form-check mb-2">
-          <input class="form-check-input" type="checkbox" value="" id="remember" name="remember">
+          <Input type="checkbox" id="remember" class="form-check-input" />
           <label class="form-check-label" for="remember">
             Manter conectado
           </label>
         </div>
-        <button class="btn btn-sm btn-outline-dark mb-2">
-          <i class="bi bi-box-arrow-in-right me-2"></i>Login
-        </button>
+        <Button size="sm" color="outline-dark" icon="box-arrow-in-right" text="Login" />
         <p>Não possui uma conta?
           <Link :href="route('register')">Cadastre se</Link>
         </p>
