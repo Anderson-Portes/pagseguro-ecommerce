@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Spatie\Permission\Models\Role;
 
 return new class extends Migration
 {
@@ -14,11 +15,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->foreignIdFor(Role::class, 'role_id')->nullable()->constrained()->nullOnDelete();
+            $table->boolean('activated')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
