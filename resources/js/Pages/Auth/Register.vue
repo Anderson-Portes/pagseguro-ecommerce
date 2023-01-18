@@ -5,6 +5,7 @@ import Card from "../../Components/Global/Card.vue";
 import Button from "../../Components/Form/Button.vue";
 import Input from "../../Components/Form/Input.vue";
 import FloatingLabel from "../../Components/Form/FloatingLabel.vue";
+import TogglePassword from "../../Components/Form/TogglePassword.vue";
 
 const handleSubmit = () => form.post(route('register.store'));
 const form = useForm({
@@ -25,6 +26,9 @@ const form = useForm({
         <FloatingLabel key-value="Senha" type="password" v-model="form.password" :error="form.errors.password" />
         <FloatingLabel key-value="Confirmar Senha" type="password" v-model="form.password_confirmation"
           :error="form.errors.password_confirmation" />
+        <div class="w-100 text-end">
+          <TogglePassword />
+        </div>
         <div class="form-check mb-2">
           <input class="form-check-input" type="checkbox" id="remember" @change="form.remember = !form.remember" />
           <label class="form-check-label" for="remember">
