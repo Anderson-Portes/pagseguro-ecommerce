@@ -1,4 +1,10 @@
-<script setup></script>
+<script setup>
+import Navbar from '../Components/Navigation/Navbar.vue';
+
+</script>
 <template>
-  <slot />
+  <Navbar />
+  <div class="container py-4">
+    <slot />
+  </div>
 </template>

@@ -1,4 +1,9 @@
-<script setup></script>
+<script setup>
+import BaseLayout from '../Layouts/BaseLayout.vue';
+
+</script>
 <template>
-  <h1>Hello World</h1>
+  <BaseLayout>
+    <h1>Hello World</h1>
+  </BaseLayout>
 </template>

@@ -14,6 +14,6 @@ Route::prefix('/auth')->middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', HomeController::class)->name('route');
+    Route::get('/', HomeController::class)->name('home');
     Route::post('/auth/logout', LogoutController::class)->name('logout');
 });

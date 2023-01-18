@@ -11,6 +11,6 @@ defineProps({
 </script>
 <template>
   <button :class="`btn btn-${color || 'primary'} btn-${size || 'md'}`" :type="type || ''">
-    <Icon :icon="icon" class="me-2" v-if="icon" />{{ text }}
+    <Icon :icon="icon" :class="text && 'me-2'" v-if="icon" />{{ text }}
   </button>
 </template>
