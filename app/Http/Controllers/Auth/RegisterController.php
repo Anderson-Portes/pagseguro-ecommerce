@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateUserRequest;
 use App\Services\AuthService;
 use Illuminate\Http\RedirectResponse;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class RegisterController extends Controller
 {
@@ -13,8 +15,9 @@ class RegisterController extends Controller
     {
     }
 
-    public function index(): void
+    public function index(): Response | ResponseFactory
     {
+        return inertia('Auth/Register');
     }
 
     public function store(CreateUserRequest $request): RedirectResponse
