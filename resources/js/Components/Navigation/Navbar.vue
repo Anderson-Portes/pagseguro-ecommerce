@@ -1,5 +1,6 @@
 <script setup>
 import { Link } from '@inertiajs/vue3'
+import { hasPermission } from '../../Bootstrap/constraints';
 import Button from '../Form/Button.vue';
 import Sidebar from './Sidebar.vue';
 </script>
@@ -11,8 +12,17 @@ import Sidebar from './Sidebar.vue';
       <Button icon="list" class="navbar-toggler" color="dark" data-bs-toggle="offcanvas" data-bs-target="#sidebar" />
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <li class="nav-item dropdown" v-if="hasPermission('admin resource')">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Admin
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="#">
+                  <i class="bi bi-book-half me-2"></i>Cursos
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,7 +38,7 @@ import Sidebar from './Sidebar.vue';
                 <hr class="dropdown-divider">
               </li>
               <li>
-                <Link :href="route('logout')" method="post" class="dropdown-item text-danger">
+                <Link :href="route('logout')" method="post" class="dropdown-item text-danger" as="link">
                 <i class="bi bi-escape me-2"></i>Sair
                 </Link>
               </li>

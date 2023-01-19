@@ -13,7 +13,7 @@ import { Link } from '@inertiajs/vue3'
         <a class="list-group-item list-group-item-action">
           <i class="bi bi-gear me-2"></i>Perfil
         </a>
-        <Link :href="route('logout')" method="post" class="list-group-item list-group-item-action">
+        <Link :href="route('logout')" method="post" class="list-group-item list-group-item-action" as="link">
         <i class="bi bi-escape me-2"></i>Sair
         </Link>
       </div>

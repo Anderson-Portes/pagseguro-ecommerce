@@ -4,6 +4,7 @@ import { user } from '../Bootstrap/constraints';
 </script>
 <template>
   <BaseLayout>
-    <h1>Hello World {{ user.name }}</h1>
+    <h1>Hello World</h1>
+    <pre>{{ user }}</pre>
   </BaseLayout>
 </template>

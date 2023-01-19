@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -15,5 +16,8 @@ Route::prefix('/auth')->middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/', HomeController::class)->name('home');
+    Route::prefix('/admin')->name('admin.')->middleware('resources.admin')->group(function () {
+        Route::resource('/product', ProductController::class);
+    });
     Route::post('/auth/logout', LogoutController::class)->name('logout');
 });

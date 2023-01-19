@@ -18,16 +18,11 @@ class AuthService
   public function register(array $data, bool $remember)
   {
     $user = $this->userService->create($data);
-    $this->loginUser($user, $remember);
+    auth()->login($user, $remember);
   }
 
   public function logout(): void
   {
     auth()->logout();
-  }
-
-  private function loginUser(User $user, bool $remember): void
-  {
-    auth()->login($user, $remember);
   }
 }
