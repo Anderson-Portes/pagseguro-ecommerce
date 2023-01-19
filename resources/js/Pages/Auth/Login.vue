@@ -30,9 +30,9 @@ const handleSubmit = () => form.post(route('login.store'));
             Manter conectado
           </label>
         </div>
-        <Button size="sm" color="outline-dark" icon="box-arrow-in-right" text="Login" />
+        <Button size="sm" color="outline-dark" icon="box-arrow-in-right" text="Login" class="mb-1" />
         <p>Não possui uma conta?
-          <Link :href="route('register')">Cadastre se</Link>
+          <Link :href="route('register')" class="text-decoration-none">Cadastre se</Link>
         </p>
       </form>
     </Card>

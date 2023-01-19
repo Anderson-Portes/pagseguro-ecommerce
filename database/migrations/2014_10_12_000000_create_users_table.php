@@ -18,12 +18,16 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone')->nullable();
+            $table->string('cpf')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->foreignIdFor(Role::class, 'role_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignUuid('address_id')->nullable()->references('id')->on('addresses')->nullOnDelete();
+            $table->string('password');
             $table->boolean('activated')->default(true);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

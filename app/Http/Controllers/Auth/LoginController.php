@@ -26,7 +26,7 @@ class LoginController extends Controller
         $data = $request->validated();
         if (!$this->authService->login($data, $request->remember ?? false)) {
             throw ValidationException::withMessages([
-                'password' => 'Login invalido!'
+                'password' => 'Essas credenciais não foram encontradas em nossos registros.'
             ]);
         }
         return redirect()->route('home');

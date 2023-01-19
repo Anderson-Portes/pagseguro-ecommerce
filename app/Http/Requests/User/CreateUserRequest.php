@@ -27,6 +27,14 @@ class CreateUserRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|max:255|confirmed',
+            'phone' => 'required|string|celular_com_ddd|max:255',
+            'cpf' => 'required|cpf',
+            'state' => 'required|string|uf',
+            'city' => 'required|string|max:255',
+            'district' => 'required|string|max:255',
+            'street' => 'required|string|max:255',
+            'number' => 'required|string|max:255',
+            'postal_code' => 'required|formato_cep'
         ];
     }
 }
