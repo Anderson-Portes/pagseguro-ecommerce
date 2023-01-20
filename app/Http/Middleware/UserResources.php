@@ -16,7 +16,7 @@ class UserResources
      */
     public function handle(Request $request, Closure $next)
     {
-        abort_if(!$request->user()->can('user-resource'), 404);
+        abort_if(!$request->user()->can('user-resources'), 404);
         return $next($request);
     }
 }

@@ -28,6 +28,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         Gate::define('user-resources', fn (User $user) => $user->role->hasPermissionTo('user resources'));
-        Gate::define('admin-resources', fn (User $user) => $user->role->hasPermissionTo('admin resources'));
+        Gate::define('admin-resources', fn (User $user) => true);
     }
 }

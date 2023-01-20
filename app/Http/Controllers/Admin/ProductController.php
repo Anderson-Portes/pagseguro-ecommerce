@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\CreateProductRequest;
 use App\Models\Product;
+use App\Services\ProductService;
 use Illuminate\Http\Request;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class ProductController extends Controller
 {
-    public function __construct()
+    public function __construct(private ProductService $productService)
     {
         $this->authorizeResource(Product::class, 'product');
     }
@@ -18,8 +22,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): Response | ResponseFactory
     {
+        $products = Product::paginate(10);
+        return inertia('Admin/Product/Index', compact('products'));
     }
 
     /**
@@ -27,9 +33,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): Response | ResponseFactory
     {
-        return 'Pode criar';
+        return inertia('Admin/Product/Create');
     }
 
     /**
@@ -38,9 +44,10 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateProductRequest $request)
     {
-        //
+        $this->productService->create($request->validated());
+        return back()->with('success', 'Produto criado com sucesso.');
     }
 
     /**

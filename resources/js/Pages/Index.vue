@@ -1,10 +1,10 @@
 <script setup>
-import BaseLayout from '../Layouts/BaseLayout.vue';
-import { user } from '../Bootstrap/constraints';
+import BaseLayout from "../Layouts/BaseLayout.vue";
+import { permissions } from "../Bootstrap/constraints";
 </script>
 <template>
   <BaseLayout>
     <h1>Hello World</h1>
-    <pre>{{ user }}</pre>
+    <pre>{{ permissions }}</pre>
   </BaseLayout>
 </template>

@@ -16,7 +16,7 @@ class AdminResources
      */
     public function handle(Request $request, Closure $next)
     {
-        abort_if(!$request->user()->can('admin-resource'), 404);
+        abort_if(!$request->user()->can('admin-resources'), 404);
         return $next($request);
     }
 }
